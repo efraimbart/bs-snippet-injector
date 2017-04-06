@@ -1,5 +1,5 @@
 ###bs-snippet-injector
-Write & Remove the BrowserSync Snippet to a file (Fork from https://www.npmjs.com/package/bs-snippet-injector to support `<!--BS:SNIPPET-->` comment)
+Write & Remove the BrowserSync Snippet to a file (Fork from https://www.npmjs.com/package/bs-snippet-injector to support using a `<!--BS:SNIPPET-->` comment instead of the end `</body>` tag)
 
 This is an alternative to using the BrowserSync proxy.
 
