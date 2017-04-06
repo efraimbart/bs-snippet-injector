@@ -17,7 +17,7 @@ var browserSync = require("browser-sync");
 
 // register the plugin
 browserSync.use(require("bs-snippet-injector"), {
-    // path to the file containing the closing </body> tag
+    // path to the file containing the closing </body> or <!--BS:SNIPPET--> tag
     file: "app/design/frontend/project/template/page/1column.phtml" 
 });
 
