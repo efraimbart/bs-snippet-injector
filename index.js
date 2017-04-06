@@ -20,7 +20,7 @@ var messages = {
         return "{green:Snippet already exists in: {cyan:" + path
     },
     notFound: function (path) {
-        return "{red:ERROR:} Closing body tag not found in: {cyan:" + path
+        return "{red:ERROR:} Closing body tag or snippet comment not found in: {cyan:" + path
     },
     fileNotFound: function (path) {
         return "{red:ERROR:} File not found!: {cyan:" + path
@@ -77,12 +77,20 @@ function addSnippet(bs, opts) {
         return;
     }
 
-    var modded = read.replace(/<\/body>(?![\s\S]*<\/body>)/, function () {
-        opts.currentSnippet = wrap(bs.options.get("snippet")) + "\n" + arguments[0];
+    var modded = read.replace(/<!--\s*BS:SNIPPET\s*-->/i, function () {
+        opts.currentSnippet = wrap(bs.options.get("snippet"));
         found = true;
         return opts.currentSnippet;
     });
 
+    if(!found) {
+        modded = read.replace(/<\/body>(?![\s\S]*<\/body>)/, function () {
+            opts.currentSnippet = wrap(bs.options.get("snippet")) + "\n" + arguments[0];
+            found = true;
+            return opts.currentSnippet;
+        });
+    }
+    
     if (found) {
         opts.logger.debug("Writing the file: %s", currentFilePath);
         fs.writeFileSync(currentFilePath, modded);
