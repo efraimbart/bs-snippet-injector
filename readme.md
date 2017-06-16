@@ -1,4 +1,4 @@
-###bs-snippet-injector
+###bs-snippet-injector-eb
 Write & Remove the BrowserSync Snippet to a file (Fork from https://www.npmjs.com/package/bs-snippet-injector to support using a `<!--BS:SNIPPET-->` comment instead of the end `</body>` tag)
 
 This is an alternative to using the BrowserSync proxy.
@@ -6,7 +6,7 @@ This is an alternative to using the BrowserSync proxy.
 ##Install 
 
 ```bash
-$ npm install browser-sync bs-snippet-injector
+$ npm install browser-sync bs-snippet-injector-eb
 ```
 
 ###Example
@@ -16,7 +16,7 @@ $ npm install browser-sync bs-snippet-injector
 var browserSync = require("browser-sync");
 
 // register the plugin
-browserSync.use(require("bs-snippet-injector"), {
+browserSync.use(require("bs-snippet-injector-eb"), {
     // path to the file containing the closing </body> or <!--BS:SNIPPET--> tag
     file: "app/design/frontend/project/template/page/1column.phtml" 
 });
